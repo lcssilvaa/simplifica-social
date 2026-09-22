@@ -1,0 +1,85 @@
+[
+  {
+    "codigo": "DEMO_ACOLHIMENTO_SENIOR",
+    "nome": "Acolhimento Sênior (fictício)",
+    "descricao": "Exemplo acadêmico de apoio a pessoas idosas. Não é um programa público real.",
+    "abrangencia": "demonstracao",
+    "ficticio": true,
+    "criterios": [
+      {"campo": "idade", "operador": ">=", "valor": 65, "descricao": "idade mínima de 65 anos no exemplo", "pergunta": "Qual é a sua idade?"},
+      {"campo": "renda_familiar", "operador": "<=", "valor": 2000, "descricao": "renda familiar de até R$ 2.000 no exemplo", "pergunta": "Qual é a renda mensal total da sua família, em reais?"},
+      {"campo": "cadunico", "operador": "==", "valor": true, "descricao": "Cadastro Único informado no exemplo", "pergunta": "Você possui Cadastro Único?"}
+    ],
+    "documentos": [],
+    "proximos_passos": ["Revise as informações desta simulação; este exemplo não recebe inscrições."],
+    "fonte_oficial": null
+  },
+  {
+    "codigo": "DEMO_APOIO_FAMILIAR",
+    "nome": "Apoio Familiar (fictício)",
+    "descricao": "Exemplo acadêmico para famílias com filhos. Não corresponde a benefício real.",
+    "abrangencia": "demonstracao",
+    "ficticio": true,
+    "criterios": [
+      {"campo": "possui_filhos", "operador": "==", "valor": true, "descricao": "presença de filhos no exemplo", "pergunta": "Você possui filhos?"},
+      {"campo": "renda_familiar", "operador": "<=", "valor": 1500, "descricao": "renda familiar de até R$ 1.500 no exemplo", "pergunta": "Qual é a renda mensal total da sua família, em reais?"}
+    ],
+    "documentos": [],
+    "proximos_passos": ["Confira o perfil usado na simulação; não envie documentos pessoais."],
+    "fonte_oficial": null
+  },
+  {
+    "codigo": "DEMO_INCLUSAO",
+    "nome": "Inclusão Cidadã (fictício)",
+    "descricao": "Exemplo acadêmico de inclusão. Regras inventadas exclusivamente para testes.",
+    "abrangencia": "demonstracao",
+    "ficticio": true,
+    "criterios": [
+      {"campo": "possui_deficiencia", "operador": "==", "valor": true, "descricao": "deficiência informada no exemplo", "pergunta": "Se desejar informar, você possui alguma deficiência? Não é necessário detalhar."},
+      {"campo": "renda_individual", "operador": "<=", "valor": 1000, "descricao": "renda individual de até R$ 1.000 no exemplo", "pergunta": "Qual é a sua renda mensal individual, em reais?"}
+    ],
+    "documentos": [],
+    "proximos_passos": ["Confirme apenas as informações necessárias para a simulação."],
+    "fonte_oficial": null
+  },
+  {
+  "codigo": "BOLSA_FAMILIA",
+  "nome": "Programa Bolsa Família",
+  "descricao": "Programa federal de transferência de renda destinado a famílias em situação de pobreza. Triagem inicial simplificada: não avalia regras de permanência, proteção ou todas as condições de concessão.",
+  "abrangencia": "federal",
+  "ficticio": false,
+
+  "criterios": [
+    {
+      "campo": "renda_per_capita",
+      "operador": "<=",
+      "valor": 218,
+      "descricao": "renda familiar mensal de até R$ 218 por pessoa para ingresso",
+      "pergunta": "Qual é a renda mensal total da sua família, em reais?"
+    },
+    {
+      "campo": "cadunico",
+      "operador": "==",
+      "valor": true,
+      "descricao": "família inscrita no Cadastro Único",
+      "pergunta": "Sua família está inscrita no Cadastro Único (CadÚnico)?"
+    }
+  ],
+
+  "condicionalidades": [
+    "Manter os dados do Cadastro Único atualizados e consistentes.",
+    "Cumprir os compromissos de acompanhamento de saúde aplicáveis à família.",
+    "Cumprir os compromissos de frequência escolar aplicáveis às crianças e adolescentes da família."
+  ],
+
+  "documentos": [],
+
+  "proximos_passos": [
+    "Verificar se os dados da família estão atualizados no Cadastro Único.",
+    "Caso não esteja inscrita, procurar o atendimento responsável pelo Cadastro Único no município.",
+    "Aguardar a análise e seleção realizadas pelo Programa Bolsa Família."
+  ],
+
+  "fonte_oficial": "https://www.gov.br/mds/pt-br/acoes-e-programas/bolsa-familia"
+}
+]
