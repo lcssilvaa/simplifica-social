@@ -15,4 +15,6 @@ def test_docs_and_openapi(client):
         "/api/benefits",
         "/api/benefits/{codigo}",
     }
-    assert client.get("/", follow_redirects=False).headers["location"] == "/docs"
+    response = client.get("/", follow_redirects=False)
+    assert response.status_code == 200
+    assert "Explorar demonstração" in response.text

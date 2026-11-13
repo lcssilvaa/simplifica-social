@@ -1,0 +1,18 @@
+.help-container { display: grid; gap: 1.25rem; max-width: 1000px; }
+.help-card { width: 100%; padding: 1.25rem; display: flex; gap: 1rem; align-items: center; text-align: left; border: 1px solid var(--borda); border-radius: 12px; background: var(--superficie); color: var(--texto); }
+.help-card:hover { border-color: var(--azul); }
+.help-card .card-text { flex: 1; min-width: 0; }
+.help-card-title { display: block; color: var(--azul); font-weight: 600; margin-bottom: .35rem; font-size: 1.2rem; }
+.help-card-description { display: block; color: var(--muted); }
+.help-card .feature-icon { flex-shrink: 0; }
+.help-card .arrow { display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; background: var(--azul-claro); color: var(--azul); font-size: 1.4rem; }
+dialog { color: var(--texto); background: var(--superficie); border: 1px solid var(--borda); border-radius: 18px; padding: 2rem; width: min(700px, calc(100% - 32px)); max-height: calc(100dvh - 40px); }
+dialog::backdrop { background: #11161f80; }
+dialog h2 { padding-right: 2.2rem; font-size: 1.4rem; }
+.dialog-close { position: absolute; right: .75rem; top: .75rem; }
+dialog .button { margin-top: .75rem; }
+@media (max-width: 450px) {
+    .help-card { gap: .75rem; padding: 1rem .75rem; align-items: flex-start; }
+    .help-card .arrow { display: none; }
+    dialog { padding: 1.5rem 1.2rem; }
+}

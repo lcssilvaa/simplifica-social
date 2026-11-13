@@ -1,0 +1,12 @@
+.history-search { margin-bottom: .6rem; border-radius: 32px; background: var(--superficie); }
+.lista-conversas { display: grid; gap: 1.2rem; margin-top: 1.5rem; }
+.conversa-card { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; padding: 1.2rem; border: 1px solid var(--borda); border-radius: 12px; background: var(--superficie); }
+.conversa-card .informacoes { min-width: 0; flex: 1; }
+.conversa-card h3 { font-size: 1.15rem; margin: 0 0 .35rem; overflow-wrap: anywhere; }
+.conversa-card time { color: var(--muted); font-size: .95rem; }
+@media (max-width: 700px) {
+    .conversa-card { padding: 1rem; }
+    .conversa-card .feature-icon { display: none; }
+    .conversa-card .informacoes { flex-basis: 100%; }
+    .conversa-card .button { width: 100%; }
+}

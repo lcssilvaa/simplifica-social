@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <title>Chat de teste · Simplifica Social</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="brand"><div class="mark" aria-hidden="true">✳</div><div><h1>Simplifica Social</h1><p class="subtitle">Ambiente de teste da conversa</p></div></div>
+      <div class="toolbar">
+        <select id="channel" aria-label="Canal da conversa"><option value="WEB">Canal Web</option><option value="WHATSAPP">Canal WhatsApp</option></select>
+        <button class="ghost" id="new-chat" type="button">＋ Nova conversa</button>
+      </div>
+    </header>
+    <div class="layout">
+      <section class="card chat" aria-label="Conversa de teste">
+        <div class="chat-head"><div class="chat-title">Assistente social</div><div class="session" id="session-id">Criando sessão…</div></div>
+        <div class="messages" id="messages" aria-live="polite">
+          <div class="welcome" id="welcome"><div class="welcome-icon">✳</div><h2>Vamos testar a conversa</h2><p>Conte uma situação para ver como o assistente coleta informações e avalia os benefícios possíveis.</p><div class="suggestions"><button class="suggestion" type="button">Tenho 67 anos e moro sozinho</button><button class="suggestion" type="button">Tenho dois filhos e renda familiar de R$ 1.800</button></div></div>
+        </div>
+        <form class="composer" id="form"><div class="input-wrap"><textarea id="message" rows="1" maxlength="2000" placeholder="Escreva uma mensagem…" aria-label="Mensagem"></textarea><button class="send" id="send" aria-label="Enviar mensagem" type="submit">↑</button></div><p class="hint">Enter envia · Shift + Enter quebra a linha</p></form>
+      </section>
+      <aside>
+        <section class="card panel"><div class="panel-head"><h2>Perfil identificado</h2><span class="pill">Em atualização</span></div><div class="profile" id="profile"><p class="empty">As informações extraídas aparecem aqui.</p></div></section>
+        <section class="card panel"><div class="panel-head"><h2>Benefícios analisados</h2></div><div class="benefits" id="benefits"><p class="empty">Envie uma mensagem para iniciar a análise.</p></div></section>
+        <div class="notice"><strong>Ambiente de desenvolvimento</strong>Os resultados são uma triagem preliminar. Benefícios fictícios e compatibilidade não confirmam direito ao benefício. Use apenas dados fictícios nos testes.</div>
+      </aside>
+    </div>
+  </main>
+  <script src="/static/js/app.js" defer></script>
+</body>
+</html>

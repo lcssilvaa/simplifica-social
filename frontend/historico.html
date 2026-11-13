@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Histórico | Simplifica Social</title>
+    <link rel="stylesheet" href="/frontend/css/base.css">
+    <link rel="stylesheet" href="/frontend/css/historico.css">
+    <script type="module" src="/frontend/js/historico.js"></script>
+</head>
+<body data-page="history">
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <div class="app-layout">
+        <aside class="sidebar" data-sidebar></aside>
+        <div class="main-area">
+            <header class="topbar" data-header></header>
+            <main id="conteudo" class="page-content">
+                <section class="page-intro">
+                    <h2>Continue de onde parou</h2>
+                    <p>Encontre as conversas que você iniciou nesta aba do navegador.</p>
+                </section>
+                <section aria-label="Conversas anteriores">
+                    <label for="pesquisar">Pesquisar conversas</label>
+                    <input class="history-search" type="search" id="pesquisar" placeholder="Digite um título…" aria-controls="listaConversas">
+                    <p id="history-status" class="muted" role="status"></p>
+                    <div class="lista-conversas" id="listaConversas"></div>
+                    <div class="empty-state panel" id="semResultados" hidden>
+                        <h3 id="empty-title">Seu histórico começa aqui</h3>
+                        <p id="empty-description" class="muted">Inicie uma conversa para encontrá-la nesta página.</p>
+                        <a class="button" href="/conversar">Conversar com o assistente</a>
+                    </div>
+                </section>
+                <p class="notice">As referências ficam nesta aba e as mensagens ficam temporariamente no servidor. Sessões expiradas ou perdidas após um reinício não podem ser retomadas. A consulta também depende de estar habilitada na API.</p>
+                <noscript><p class="notice">Ative o JavaScript para consultar o histórico.</p></noscript>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

@@ -8,3 +8,5 @@ __pycache__/
 .coverage
 htmlcov/
 .ruff_cache/
+.local/
+desktop.ini

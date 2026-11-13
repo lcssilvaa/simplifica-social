@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Central de ajuda | Simplifica Social</title>
+    <link rel="stylesheet" href="/frontend/css/base.css">
+    <link rel="stylesheet" href="/frontend/css/ajuda.css">
+    <script type="module" src="/frontend/js/ajuda.js"></script>
+</head>
+<body data-page="help">
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <div class="app-layout">
+        <aside class="sidebar" data-sidebar></aside>
+        <div class="main-area">
+            <header class="topbar" data-header></header>
+            <main id="conteudo" class="page-content">
+                <section class="page-intro">
+                    <h2>Como podemos ajudar?</h2>
+                    <p>Escolha um assunto para conhecer melhor o Simplifica.</p>
+                </section>
+                <!-- Os cartões e suas respostas são editados em js/config.js (helpTopics). -->
+                <section id="help-topics" class="help-container" aria-label="Assuntos de ajuda"></section>
+                <noscript><p class="notice">Ative o JavaScript para abrir os assuntos de ajuda.</p></noscript>
+            </main>
+        </div>
+    </div>
+    <dialog id="help-dialog" aria-labelledby="modalTitle">
+        <form method="dialog"><button class="dialog-close icon-button" aria-label="Fechar ajuda">×</button></form>
+        <h2 id="modalTitle"></h2>
+        <div id="modalContent"></div>
+        <form method="dialog"><button class="button">Entendi</button></form>
+    </dialog>
+</body>
+</html>

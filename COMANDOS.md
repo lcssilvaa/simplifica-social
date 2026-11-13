@@ -23,6 +23,9 @@ LLM_PROVIDER=mock
 .\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000 --no-access-log
 ```
 
+- Site (acesso de demonstração): <http://localhost:8000>
+- Assistente integrado: <http://localhost:8000/conversar>
+- Guia para editar textos, imagens e páginas: [frontend/README.md](frontend/README.md)
 - Swagger (interface para testar a API): <http://localhost:8000/docs>
 - Saúde da API: <http://localhost:8000/health>
 - Catálogo de benefícios: <http://localhost:8000/api/benefits>
@@ -44,7 +47,7 @@ ipconfig
 Procure o **Endereço IPv4** do adaptador Wi-Fi ou Ethernet conectado à rede. Por exemplo, se ele for `192.168.1.10`, abra no celular ou em outro computador da mesma rede:
 
 ```text
-http://192.168.1.10:8000/docs
+http://192.168.1.10:8000
 ```
 
 Substitua o IP do exemplo pelo IP do seu computador. `0.0.0.0` é o endereço de escuta do servidor; no navegador do outro dispositivo, use o IP encontrado.
@@ -127,7 +130,7 @@ docker compose logs -f api
 docker compose down
 ```
 
-O Compose atual publica somente em <http://localhost:8000/docs>. Para testar pela mesma rede, use o comando de run com `--host 0.0.0.0` fora do Docker. Parar ou recriar a aplicação apaga as sessões em memória.
+O Compose atual publica o site em <http://localhost:8000> e a documentação da API em <http://localhost:8000/docs>, com acesso local. Para testar pela mesma rede, use o comando de run com `--host 0.0.0.0` fora do Docker. Parar ou recriar a aplicação apaga as sessões em memória.
 
 ## Linux / macOS
 

@@ -1,0 +1,235 @@
+/* Frame 11:4 do Figma: 1920 × 1080. Estilos limitados à tela de acesso. */
+@font-face {
+    font-family: "Inter";
+    src: url("/frontend/fonts/Inter-Variable.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+.login-page {
+    /* Uma única escala para o frame inteiro, limitada também pela altura. */
+    --login-unit: min(1px, .0520833333vw, .0925925926dvh);
+    --login-type-offset: calc(1rem - 18px);
+    --login-border: #d9d9d9;
+    --login-placeholder: #b3b3b3;
+    --login-green: #02983c;
+    --login-green-border: #02542d;
+    --login-google: #ff0400;
+    min-height: 100dvh;
+    color: var(--azul, #00419e);
+    background: linear-gradient(180deg, #fff 0%, #f5f5f5 100%);
+    font-weight: 300;
+    font-family: "Fredoka", Arial, sans-serif;
+    letter-spacing: -.01em;
+    line-height: 1;
+}
+
+.login-container {
+    display: grid;
+    grid-template-columns: minmax(0, 963fr) minmax(0, 957fr);
+    width: calc(1920 * var(--login-unit));
+    min-height: calc(1080 * var(--login-unit));
+    max-width: 100%;
+    margin-inline: auto;
+}
+
+.login-area { position: relative; min-width: 0; }
+.login-logo {
+    position: absolute;
+    top: calc(11 * var(--login-unit));
+    left: calc(26 * var(--login-unit));
+    width: calc(196 * var(--login-unit));
+    height: auto;
+    display: block;
+}
+.login-content {
+    width: 73.001038%;
+    margin-left: 15.36864%;
+    padding-top: calc(254 * var(--login-unit));
+    padding-bottom: calc(134 * var(--login-unit));
+}
+.login-intro h1 {
+    font-size: calc(64 * var(--login-unit) + 3.555556 * var(--login-type-offset));
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -.01em;
+    margin: 0;
+    overflow-wrap: normal;
+}
+.login-intro p {
+    width: calc(403 * var(--login-unit));
+    max-width: 100%;
+    font-size: calc(24 * var(--login-unit) + 1.333333 * var(--login-type-offset));
+    line-height: 1;
+    margin: calc(7 * var(--login-unit)) 0 0 calc(2 * var(--login-unit));
+}
+.login-form {
+    width: 74.253201%;
+    margin: calc(62 * var(--login-unit)) 0 0 13.655761%;
+    padding: calc(41 * var(--login-unit)) calc(36 * var(--login-unit)) calc(45 * var(--login-unit)) calc(38 * var(--login-unit));
+    border: calc(1 * var(--login-unit)) solid var(--login-border);
+    border-radius: calc(8 * var(--login-unit));
+    background: var(--superficie, #fff);
+}
+.login-form fieldset { display: grid; gap: calc(25 * var(--login-unit)); }
+.login-field { min-width: 0; }
+.login-field label {
+    font-weight: 700;
+    font-size: calc(24 * var(--login-unit) + 1.333333 * var(--login-type-offset));
+    line-height: 1;
+    margin: 0 0 calc(23 * var(--login-unit));
+}
+.login-field input {
+    display: block;
+    height: calc(48 * var(--login-unit));
+    min-height: calc(48 * var(--login-unit));
+    padding: calc(15 * var(--login-unit)) calc(16 * var(--login-unit));
+    border: calc(1 * var(--login-unit)) solid var(--login-border);
+    border-radius: calc(8 * var(--login-unit));
+    background: var(--superficie, #fff);
+    color: var(--texto, #000);
+    font-family: "Inter", Arial, sans-serif;
+    font-size: calc(16 * var(--login-unit) + .888889 * var(--login-type-offset));
+    font-weight: 400;
+    font-optical-sizing: none;
+    line-height: 1;
+    letter-spacing: 0;
+    opacity: 1;
+    -webkit-text-fill-color: currentColor;
+}
+.login-field input::placeholder { color: var(--login-placeholder); opacity: 1; }
+.login-forgot {
+    display: flex;
+    align-items: flex-start;
+    width: fit-content;
+    min-height: calc(50 * var(--login-unit));
+    margin: calc(17 * var(--login-unit)) 0 0 calc(6 * var(--login-unit));
+    font-size: calc(18 * var(--login-unit) + var(--login-type-offset));
+    font-weight: 300;
+    text-decoration: none;
+}
+.login-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 174fr) minmax(0, 164fr);
+    gap: calc(17 * var(--login-unit));
+    margin: 0 calc(48 * var(--login-unit)) 0 calc(43 * var(--login-unit));
+}
+.login-actions .button {
+    min-width: 0;
+    min-height: calc(48 * var(--login-unit));
+    padding: 0;
+    border-width: calc(1 * var(--login-unit));
+    border-radius: calc(8 * var(--login-unit));
+    font-size: calc(20 * var(--login-unit) + 1.111111 * var(--login-type-offset));
+    font-weight: 600;
+    line-height: 1;
+    opacity: 1;
+}
+.login-actions .login-google {
+    justify-content: flex-start;
+    gap: calc(12 * var(--login-unit));
+    padding-left: calc(23 * var(--login-unit));
+    background: var(--superficie, #fff);
+    border: calc(2 * var(--login-unit)) solid var(--login-google);
+    color: var(--login-google);
+    letter-spacing: -.01em;
+}
+.login-google img {
+    flex: 0 0 calc(28 * var(--login-unit));
+    width: calc(28 * var(--login-unit));
+    height: calc(28 * var(--login-unit));
+    transform: translateY(calc(1 * var(--login-unit)));
+}
+.login-submit {
+    color: #f5f5f5;
+    background: var(--login-green);
+    border-color: var(--login-green-border);
+    letter-spacing: 0;
+}
+.login-register {
+    width: calc(318 * var(--login-unit));
+    max-width: calc(100% - 69 * var(--login-unit));
+    margin: calc(27 * var(--login-unit)) 0 0 calc(69 * var(--login-unit));
+    text-align: left;
+    font-size: calc(20 * var(--login-unit) + 1.111111 * var(--login-type-offset));
+    line-height: 1;
+}
+.login-register a { font-weight: 400; text-underline-offset: 2px; }
+.login-footer {
+    width: calc(305 * var(--login-unit));
+    max-width: 100%;
+    margin: calc(23 * var(--login-unit)) 0 0 34.28165%;
+    font-size: calc(20 * var(--login-unit) + 1.111111 * var(--login-type-offset));
+    line-height: 1;
+    opacity: .5;
+}
+.imagem-area {
+    position: relative;
+    align-self: start;
+    height: calc(1000 * var(--login-unit));
+    margin: calc(35 * var(--login-unit)) calc(52 * var(--login-unit)) calc(45 * var(--login-unit)) 0;
+    overflow: hidden;
+    border-radius: calc(15 * var(--login-unit));
+    mask-image: url("/frontend/img/login-figma/photo-mask.svg");
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+}
+.imagem-area img {
+    position: absolute;
+    /* Enquadramento original: camada 1577 × 1051, máscara 905 × 1000. */
+    left: -51.60221%;
+    top: -.6%;
+    width: 174.254144%;
+    max-width: none;
+    height: 105.1%;
+    object-fit: cover;
+}
+.login-accessibility { z-index: 51; }
+
+/* Reorganiza os mesmos elementos: o arquivo Figma não tem frame móvel. */
+@media (max-width: 1100px) {
+    .login-page { --login-unit: 1px; }
+    .login-container { width: 100%; min-height: 100dvh; grid-template-columns: minmax(0, 1fr); padding: 20px 24px 40px; }
+    .login-logo { position: static; width: 140px; margin: 0 0 32px; }
+    .login-content { width: 100%; max-width: 703px; margin-inline: auto; padding: 0; }
+    .login-intro h1 { font-size: clamp(2rem, 6vw, 3rem); }
+    .login-intro p { width: auto; font-size: 1.111111rem; margin: 12px 0 0; line-height: 1.4; }
+    .login-form { width: 100%; max-width: 522px; margin: 36px auto 0; padding: 32px 24px; }
+    .login-form fieldset { gap: 25px; }
+    .login-field label { margin-bottom: 16px; }
+    .login-forgot { margin: 17px 0 0; }
+    .login-actions { gap: 16px; margin: 0; }
+    .login-actions .login-google { justify-content: center; gap: 12px; padding-left: 0; }
+    .login-register { width: auto; max-width: 100%; margin: 27px 0 0; text-align: center; line-height: 1.4; }
+    .login-footer { margin: 24px auto 0; text-align: center; line-height: 1.4; }
+    .imagem-area { display: none; }
+}
+
+@media (max-width: 380px) {
+    .login-container { padding-inline: 16px; }
+    .login-form { padding-inline: 20px; }
+    .login-actions { gap: 10px; }
+    .login-google img { flex-basis: 24px; width: 24px; height: 24px; }
+    .login-actions .login-google { gap: 8px; }
+    :root[data-font-size="huge"] .login-actions { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Preferências existentes continuam aplicadas nesta tela. */
+:root:is([data-line-spacing="compact"], [data-line-spacing="wide"]) .login-page { line-height: var(--entrelinhas); }
+:root:is([data-line-spacing="compact"], [data-line-spacing="wide"]) .login-page :is(h1, p, label, input, .login-forgot, .button) { line-height: var(--entrelinhas); }
+:root:is([data-line-spacing="compact"], [data-line-spacing="wide"]) .login-field input { height: auto; }
+@media (max-width: 1100px) {
+    :root[data-font-size="large"] .login-intro h1,
+    :root[data-font-size="huge"] .login-intro h1 { font-size: clamp(2rem, 6vw, 3.555556rem); }
+}
+:root.high-contrast .login-page {
+    --login-border: #000;
+    --login-placeholder: #000;
+    --login-green: #005422;
+    --login-green-border: #000;
+    --login-google: #880000;
+    background: #fff;
+}
+:root.high-contrast .login-footer { opacity: 1; }
+:root.high-contrast .login-submit { color: #fff; }

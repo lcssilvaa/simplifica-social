@@ -8,6 +8,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt \
     && useradd --create-home appuser
 COPY app ./app
+COPY frontend ./frontend
 
 USER appuser
 EXPOSE 8000

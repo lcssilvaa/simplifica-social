@@ -1,0 +1,33 @@
+.identity-page { max-width: 1120px; }
+.questionario { margin-top: 2rem; padding: clamp(20px, 3.5vw, 40px); background: var(--questionario); color: var(--sobre-questionario); border-color: var(--questionario); }
+.question-top { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.question-top .eyebrow { color: var(--sobre-questionario); font-size: 1rem; }
+.questionario .button.secondary { color: var(--sobre-questionario); background: transparent; border-color: #73abff; }
+.questionario .button.secondary:hover { background: #a5caff22; }
+.questionario :focus-visible { outline-color: #73abff; }
+.questionario h3 { color: var(--sobre-questionario); }
+.questionario :is(.muted, .form-message, .profile-field dt) { color: var(--dica-questionario); }
+.questionario .benefit-card { background: var(--superficie); color: var(--texto); }
+.questionario .benefit-card h3 { color: var(--azul); }
+.questionario .benefit-card :is(.muted, details) { color: var(--muted); }
+.questionario .button:not(.secondary) { background: var(--acao-questionario); color: #11161f; border-color: var(--acao-questionario); }
+.questionario #btnContinuar { flex: 1; border-radius: 32px; font-size: 1.1rem; }
+progress { display: block; width: 100%; height: 9px; border: 0; border-radius: 20px; overflow: hidden; margin: 1.3rem 0 1.75rem; accent-color: #55b3c7; background: #6c737c; }
+progress::-webkit-progress-bar { background: #6c737c; border-radius: 20px; }
+progress::-webkit-progress-value { background: #55b3c7; border-radius: 20px; }
+progress::-moz-progress-bar { background: #55b3c7; }
+#textoPergunta { font-size: clamp(1.4rem, 2.5vw, 1.7rem); margin-bottom: .65rem; }
+#descricaoPergunta { font-size: 1rem; }
+.question-actions { margin-top: 1.25rem; }
+#resumoResultado { white-space: pre-wrap; }
+#perfilResultado { margin: 1.5rem 0; }
+#finalizacao .actions { margin-top: 1.5rem; }
+#btnVoz[aria-pressed="true"] { background: #fff; color: #a32121; }
+:root.high-contrast .questionario { border-color: #000; }
+:root.high-contrast .questionario .button { border-color: #000; }
+@media (max-width: 550px) {
+    .question-top { align-items: flex-start; flex-direction: column; }
+    .question-top .button { width: 100%; }
+    .question-actions { flex-direction: column-reverse; align-items: stretch; }
+    #finalizacao .actions > * { width: 100%; }
+}

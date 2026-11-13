@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#00419E">
+    <title>Assistente IA | Simplifica Social</title>
+    <link rel="preload" href="/frontend/fonts/Fredoka-Variable.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/frontend/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="/frontend/css/base.css?v=chat-25-88-1">
+    <link rel="stylesheet" href="/frontend/css/chatbot.css?v=25-88-sidebar-3">
+    <script type="module" src="/frontend/js/chatbot.js?v=25-88-sidebar-3"></script>
+</head>
+<body data-page="chat" class="chat-screen">
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <div class="app-layout">
+        <aside class="sidebar" data-sidebar></aside>
+        <div class="main-area">
+            <header class="topbar" data-header></header>
+            <main id="conteudo" class="chat-page">
+                <section class="page-intro chat-intro">
+                    <h2>Vamos conhecer sua realidade</h2>
+                    <p>Responda algumas perguntas para explorar benefícios.</p>
+                </section>
+                <div class="chat-layout">
+                    <section class="chat-panel" aria-label="Conversa com o assistente">
+                        <div id="messages" class="messages" role="log" aria-label="Mensagens" aria-live="polite" aria-relevant="additions text">
+                            <div class="welcome assistant" id="welcome">
+                                <div class="message-avatar assistant-avatar" aria-hidden="true">
+                                    <span class="assistant-symbol"><img src="/frontend/img/chat-figma/assistant.png" alt="" width="76" height="76"></span>
+                                </div>
+                                <div class="message-bubble">
+                                    <h3 class="message-label">Assistente Simplifica</h3>
+                                    <div class="message-text">
+                                        <p>Olá! Vou ajudar você a conhecer possíveis benefícios sociais e entender os próximos passos.</p>
+                                        <p>Para começar, em qual cidade e estado você mora?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="composer" id="chatForm">
+                            <label class="sr-only" for="messageInput">Sua mensagem</label>
+                            <div class="composer-input">
+                                <textarea id="messageInput" rows="2" placeholder="Digite sua resposta..." maxlength="2000" required aria-describedby="composer-hint"></textarea>
+                                <button class="mic-button" id="mic" type="button" aria-label="Ditar mensagem" aria-pressed="false" title="Ditar mensagem"><img src="/frontend/img/chat-figma/mic.svg" alt="" width="36" height="36"></button>
+                                <button class="button" id="send" type="submit">Enviar</button>
+                            </div>
+                            <p class="sr-only" id="composer-hint">Enter envia. Shift + Enter quebra a linha. O microfone preenche a mensagem para você revisar antes de enviar. Use apenas dados fictícios.</p>
+                        </form>
+                        <p id="chat-error" class="form-message error" role="alert" hidden></p>
+                    </section>
+                </div>
+                <noscript><p class="notice">Ative o JavaScript para conversar com o assistente.</p></noscript>
+            </main>
+        </div>
+    </div>
+    <dialog id="chat-tools" class="chat-tools" aria-labelledby="chat-tools-title">
+        <form method="dialog" class="chat-tools-header">
+            <h2 id="chat-tools-title">Opções da conversa</h2>
+            <button class="icon-button" aria-label="Fechar opções" autofocus>×</button>
+        </form>
+        <p id="session-status" class="muted" role="status">Pronto para conversar</p>
+        <div class="actions"><button class="button secondary small" id="stop-reading" type="button">Parar leitura</button><button class="button secondary small" id="new-chat" type="button">+ Nova conversa</button></div>
+        <div class="suggestions" aria-label="Exemplos para iniciar uma conversa">
+            <button type="button" class="suggestion">Tenho 67 anos e moro sozinho</button>
+            <button type="button" class="suggestion">Tenho dois filhos e renda familiar de R$ 1.800</button>
+        </div>
+        <aside class="analysis-panel" aria-label="Análise da conversa">
+            <section class="panel">
+                <h2>Perfil identificado</h2>
+                <dl id="profile"><div class="muted">As informações identificadas aparecem aqui.</div></dl>
+            </section>
+            <section class="panel">
+                <h2>Benefícios analisados</h2>
+                <div id="benefits"><p class="muted">Envie uma mensagem para iniciar a análise.</p></div>
+            </section>
+        </aside>
+        <p class="notice compact">Esta análise é preliminar e não confirma direito a benefício. Exemplos fictícios são identificados nos resultados.</p>
+    </dialog>
+</body>
+</html>

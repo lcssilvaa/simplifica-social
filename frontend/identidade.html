@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Identidade | Simplifica Social</title>
+    <link rel="stylesheet" href="/frontend/css/base.css">
+    <link rel="stylesheet" href="/frontend/css/identidade.css">
+    <script type="module" src="/frontend/js/identidade.js"></script>
+</head>
+<body data-page="identity">
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <div class="app-layout">
+        <aside class="sidebar" data-sidebar></aside>
+        <div class="main-area">
+            <header class="topbar" data-header></header>
+            <main id="conteudo" class="page-content identity-page">
+                <section class="page-intro">
+                    <h2>Descubra seus benefícios</h2>
+                    <p>Uma pergunta por vez. Você também pode responder falando, se seu navegador permitir.</p>
+                </section>
+                <section class="questionario panel" aria-label="Questionário de identidade">
+                    <form id="areaPerguntas">
+                        <div class="question-top">
+                            <span id="numeroPergunta" class="eyebrow"></span>
+                            <button class="button secondary small" id="btnVoz" type="button">Responder falando</button>
+                        </div>
+                        <progress id="progresso" max="5" value="1" aria-label="Progresso do questionário"></progress>
+                        <h3 id="textoPergunta" tabindex="-1"></h3>
+                        <p id="descricaoPergunta" class="muted"></p>
+                        <div id="campoTexto">
+                            <label class="sr-only" for="resposta">Sua resposta</label>
+                            <input class="campo-resposta" type="text" id="resposta" autocomplete="off" maxlength="40" aria-describedby="descricaoPergunta mensagem">
+                        </div>
+                        <div id="campoBooleano" hidden>
+                            <label class="sr-only" for="respostaBooleana">Sua resposta</label>
+                            <select id="respostaBooleana" aria-describedby="descricaoPergunta mensagem">
+                                <option value="">Selecione uma resposta</option>
+                                <option value="true">Sim</option>
+                                <option value="false">Não</option>
+                                <option value="unknown">Não sei / prefiro não responder</option>
+                            </select>
+                        </div>
+                        <p id="mensagem" class="form-message" role="status"></p>
+                        <div class="actions question-actions">
+                            <button class="button secondary" id="btnVoltar" type="button">Voltar</button>
+                            <button class="button" id="btnContinuar" type="submit">Continuar</button>
+                        </div>
+                    </form>
+                    <section id="finalizacao" hidden aria-labelledby="resultado-title">
+                        <h3 id="resultado-title" tabindex="-1">Sua orientação inicial</h3>
+                        <p id="resumoResultado"></p>
+                        <dl id="perfilResultado"></dl>
+                        <div id="beneficiosResultado"></div>
+                        <div class="actions">
+                            <a class="button" id="continuarConversa" href="/conversar">Continuar com o assistente</a>
+                            <button class="button secondary" id="btnRecomecar" type="button">Refazer questionário</button>
+                        </div>
+                    </section>
+                </section>
+                <p class="notice">Use dados fictícios nesta demonstração. As respostas serão enviadas à mesma API do assistente. A análise compara os critérios do catálogo e não confirma aprovação ou direito a benefício.</p>
+                <noscript><p class="notice">Ative o JavaScript para responder ao questionário.</p></noscript>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

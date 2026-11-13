@@ -25,7 +25,13 @@ flowchart TD
 
 As rotas cuidam do transporte HTTP. O `ChatService` combina extração, perfil acumulado, análise e resposta, sem depender de FastAPI. O motor decide os resultados usando operadores permitidos, nunca `eval` ou uma decisão da IA. O provedor recebe cópias dos resultados para gerar o texto.
 
-Foram acrescentados `session_repository.py`, rotas próprias para sessões e benefícios e testes específicos. Isso separa o armazenamento do fluxo de conversa e permite substituir JSON/memória por banco de dados implementando os mesmos contratos (`Protocol`). Não há front-end, integração real com WhatsApp, RAG ou banco vetorial.
+Foram acrescentados `session_repository.py`, rotas próprias para sessões e benefícios e testes específicos. Isso separa o armazenamento do fluxo de conversa e permite substituir JSON/memória por banco de dados implementando os mesmos contratos (`Protocol`). A interface em `frontend/` usa a mesma API para conversa e questionário, sem regras de elegibilidade duplicadas no navegador. Ainda não há integração real com WhatsApp, RAG ou banco vetorial.
+
+## Interface e manutenção
+
+O site abre em <http://localhost:8000>, com acesso de demonstração, início, conversa, histórico, identidade, configurações e ajuda. O guia [frontend/README.md](frontend/README.md) mostra onde editar textos, imagens, cores, perguntas e itens do menu. A interface anterior de testes foi preservada em <http://localhost:8000/chat-teste>.
+
+As páginas HTML ficam separadas dos estilos e dos módulos JavaScript. Menu, cabeçalho, chamadas à API e apresentação das análises têm componentes compartilhados. Não há dependências de frontend para instalar nem etapa de build. Login real e persistência em banco continuam como etapas futuras.
 
 ## Estrutura
 
@@ -64,6 +70,11 @@ simplifica-social/
 │   │   └── chat_service.py
 │   └── data/
 │       └── benefits.json
+├── frontend/                 # Interface principal; veja frontend/README.md
+│   ├── *.html                # Uma página por tela
+│   ├── css/                  # Tema compartilhado e estilos de cada tela
+│   ├── js/                   # Configuração, componentes, API e comportamento
+│   └── img/                  # Imagens e ícones
 ├── tests/
 │   ├── conftest.py
 │   ├── test_health.py
@@ -108,7 +119,7 @@ cp .env.example .env
 .venv/bin/python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000 --no-access-log
 ```
 
-Acesse <http://localhost:8000> (redireciona ao Swagger), <http://localhost:8000/docs> ou <http://localhost:8000/health>.
+Acesse <http://localhost:8000> para abrir o site, <http://localhost:8000/conversar> para usar o assistente, <http://localhost:8000/docs> para explorar a API ou <http://localhost:8000/health> para verificar a aplicação.
 
 Use **um único worker** enquanto o armazenamento for em memória. Reiniciar a aplicação, inclusive pelo `--reload`, apaga as sessões. Processos ou réplicas diferentes não compartilham dados.
 

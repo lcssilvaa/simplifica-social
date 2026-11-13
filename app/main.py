@@ -1,12 +1,14 @@
 import asyncio
 from contextlib import asynccontextmanager, suppress
 from collections.abc import AsyncIterator
+from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
-from app.api.routes import benefits, chat, health, sessions
+from app.api.routes import benefits, chat, health, pages, sessions
 from app.core.config import Settings, get_settings
 from app.core.exceptions import DomainError
 from app.repositories.benefit_repository import JsonBenefitRepository
@@ -94,9 +96,16 @@ def create_app(
             },
         )
 
-    @application.get("/", include_in_schema=False)
-    async def root() -> RedirectResponse:
-        return RedirectResponse("/docs")
+    static_dir = Path(__file__).parent / "static"
+    application.mount("/static", StaticFiles(directory=static_dir), name="static")
+    application.mount(
+        "/frontend", StaticFiles(directory=pages.FRONTEND_DIR), name="frontend"
+    )
+    application.include_router(pages.router)
+
+    @application.get("/chat-teste", include_in_schema=False)
+    async def development_chat() -> FileResponse:
+        return FileResponse(static_dir / "index.html")
 
     for router in (health.router, sessions.router, chat.router, benefits.router):
         application.include_router(router)
