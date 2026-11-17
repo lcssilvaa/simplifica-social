@@ -10,7 +10,7 @@ Na raiz do projeto:
 .\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000 --no-access-log
 ```
 
-Abra <http://localhost:8000>. Não abra os HTMLs com duplo clique ou por um servidor separado: os módulos JavaScript, as rotas e a API dependem do FastAPI. Depois de editar um HTML, CSS ou JS, atualize o navegador. Se ele continuar mostrando a versão antiga, use `Ctrl+F5`.
+Abra <http://localhost:8000> para ver a landing page. O acesso fica em <http://localhost:8000/login>. Não abra os HTMLs com duplo clique ou por um servidor separado: os módulos JavaScript, as rotas e a API dependem do FastAPI. Depois de editar um HTML, CSS ou JS, atualize o navegador. Se ele continuar mostrando a versão antiga, use `Ctrl+F5`.
 
 O provedor da conversa continua sendo escolhido por `LLM_PROVIDER` na configuração do backend. Para testar sem Ollama, use `LLM_PROVIDER=mock` no `.env`. O mock interpreta frases explícitas; as sugestões da conversa e o resumo do questionário usam esses padrões.
 
@@ -19,6 +19,7 @@ O provedor da conversa continua sendo escolhido por `LLM_PROVIDER` na configura�
 | Alteração | Arquivo |
 | --- | --- |
 | Textos, títulos e campos de uma página | O próprio `.html` da página |
+| Landing page, estilos, imagens e interações | `landing_page/index.html`, `landing_page/css/`, `landing_page/assets/` e `landing_page/js/script.js` |
 | Cores, fonte, botões, cartões e espaçamento compartilhado | `css/base.css`, começando por `:root` |
 | Estilo específico de uma tela | `css/login.css`, `chatbot.css`, `identidade.css`, `historico.css`, `configuracoes.css` ou `ajuda.css` |
 | Nome, slogan, imagens compartilhadas e foto do acesso | `js/config.js`, objeto `site` |
@@ -34,7 +35,8 @@ Exemplo: para trocar a foto do acesso, coloque o arquivo em `frontend/img/` e al
 
 | Endereço | HTML | Comportamento |
 | --- | --- | --- |
-| `/` ou `/login` | `login.html` | Apresenta o acesso de demonstração |
+| `/` | `landing_page/index.html` | Apresenta o projeto antes do login |
+| `/login` | `login.html` | Apresenta o acesso de demonstração |
 | `/inicio` | `index.html` | Apresenta os atalhos principais |
 | `/conversar` | `chatbot.html` | Cria sessões e envia mensagens à API |
 | `/historico` | `historico.html` | Pesquisa títulos e retoma sessões desta aba |
@@ -44,6 +46,16 @@ Exemplo: para trocar a foto do acesso, coloque o arquivo em `frontend/img/` e al
 | `/chat-teste` | `app/static/index.html` | Preserva a interface anterior de desenvolvimento |
 
 O mapa das páginas fica em `app/api/routes/pages.py`. Os recursos são servidos em `/frontend/css/`, `/frontend/js/` e `/frontend/img/`. Os arquivos antigos em `/static/` continuam disponíveis para o chat de desenvolvimento.
+
+A antiga pasta `landing_page/` da raiz foi movida para `frontend/landing_page/`. A apresentação usa `base.css`, a Fredoka local, as cores e as preferências de leitura das demais telas. A estrutura ocupa a largura disponível, com texto e fotografia ampliada em colunas no desktop e uma coluna no celular. A fotografia original do Unsplash fica em `landing_page/assets/familia.jpg`, sem depender de uma chamada externa. A navbar tem altura mínima de 88 px, logo de 62 px no desktop e 50 px no celular, links ampliados e botões de pelo menos 52 px. O menu móvel abre até 1100 px, e **Entrar** permanece visível mesmo com o menu fechado. O botão flutuante de conversa tem 68 px no desktop e 64 px no celular.
+
+A seção **Assistente IA** recupera os balões da primeira landing, com uma conversa ilustrativa identificada como demonstração. As três mensagens entram em sequência ao chegar à seção e a animação reinicia ao sair e voltar. A preferência de reduzir movimentos, do site ou do sistema, mostra as mensagens imediatamente. Sem JavaScript, os textos permanecem visíveis. A conversa real continua disponível pelos mesmos links de entrada.
+
+A seção **Benefícios sociais** é estática: nomes, descrições, fotos e links ficam em `landing_page/index.html`, sem consultas à API. O carrossel mostra dois cards no desktop e um até 900 px, com transição lateral, setas, indicadores, navegação por teclado e deslize pelo toque. A mudança é manual; os cards fora da página atual não recebem foco. A apresentação contém o Bolsa Família e os três exemplos acadêmicos já usados no projeto, preservando a identificação de fictícios. Sem JavaScript, a faixa continua acessível por rolagem horizontal. Para atualizar essa apresentação, edite o HTML; ela não sincroniza automaticamente com o catálogo do assistente.
+
+O favicon compartilhado é `img/favicon.png`, com transparência real. Sua origem, o prompt de edição e as fontes dos textos ficam em [landing_page/assets/README.md](landing_page/assets/README.md).
+
+O fluxo de entrada é **landing → login → tela escolhida**. **Entrar** na landing abre `/login`; o acesso de demonstração segue para `/inicio`. Os botões de conversa e o botão flutuante abrem `/login?next=conversar`; após **Entrar**, seguem para `/conversar`. As opções de questionário abrem `/login?next=identidade` e seguem para o questionário existente. `js/login.js` aceita apenas essas duas chaves de destino e usa `/inicio` como alternativa. Isso organiza a navegação do acesso de demonstração; não adiciona autenticação nem bloqueia as rotas existentes.
 
 ## Organização do JavaScript
 
@@ -76,7 +88,7 @@ As regras locais do protótipo anterior foram substituídas por essa análise ce
 
 ## Limites atuais
 
-- O botão **Entrar** do login abre `/inicio`, preservando o acesso de demonstração sem autenticar nem criar uma conta. E-mail, senha e Google continuam desabilitados. Os links **Esqueceu sua senha?** e **Criar uma** abrem a ajuda existente, pois recuperação e cadastro ainda não possuem integração. A descrição acessível e os títulos dos controles informam esses limites. O link de acessibilidade fica disponível ao navegar por Tab, antes do formulário.
+- O botão **Entrar** do login abre `/inicio` ou o destino conhecido escolhido na landing, preservando o acesso de demonstração sem autenticar nem criar uma conta. E-mail, senha e Google continuam desabilitados. Os links **Esqueceu sua senha?** e **Criar uma** abrem a ajuda existente, pois recuperação e cadastro ainda não possuem integração. A descrição acessível e os títulos dos controles informam esses limites. O link de acessibilidade fica disponível ao navegar por Tab, antes do formulário.
 - A conversa está integrada à API existente. Não há envio de anexos, integração com WhatsApp ou persistência em banco nesta entrega.
 - A aba guarda até 50 referências de conversas (`id`, título de até 80 caracteres e data) e a sessão atual. As preferências de acessibilidade ficam no navegador entre visitas. Mensagens completas e perfil não são gravados no armazenamento do navegador. Os títulos podem conter um trecho da primeira mensagem; use dados fictícios.
 - O histórico vale para a aba atual, não é sincronizado com uma conta e depende de `ENABLE_SESSION_INSPECTION=true`. Sessões expiram pelo TTL do servidor e são perdidas ao reiniciar a aplicação.

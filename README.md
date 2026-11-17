@@ -29,7 +29,7 @@ Foram acrescentados `session_repository.py`, rotas próprias para sessões e ben
 
 ## Interface e manutenção
 
-O site abre em <http://localhost:8000>, com acesso de demonstração, início, conversa, histórico, identidade, configurações e ajuda. O guia [frontend/README.md](frontend/README.md) mostra onde editar textos, imagens, cores, perguntas e itens do menu. A interface anterior de testes foi preservada em <http://localhost:8000/chat-teste>.
+O site abre com a landing page em <http://localhost:8000>, antes do acesso de demonstração em <http://localhost:8000/login>. Os botões de conversa e benefícios passam pelo login e continuam na tela escolhida. A landing fica em `frontend/landing_page/`, junto das páginas de início, conversa, histórico, identidade, configurações e ajuda. O guia [frontend/README.md](frontend/README.md) mostra onde editar textos, imagens, cores, perguntas e itens do menu. A interface anterior de testes foi preservada em <http://localhost:8000/chat-teste>.
 
 As páginas HTML ficam separadas dos estilos e dos módulos JavaScript. Menu, cabeçalho, chamadas à API e apresentação das análises têm componentes compartilhados. Não há dependências de frontend para instalar nem etapa de build. Login real e persistência em banco continuam como etapas futuras.
 
@@ -71,6 +71,7 @@ simplifica-social/
 │   └── data/
 │       └── benefits.json
 ├── frontend/                 # Interface principal; veja frontend/README.md
+│   ├── landing_page/         # Apresentação pública, exibida antes do login
 │   ├── *.html                # Uma página por tela
 │   ├── css/                  # Tema compartilhado e estilos de cada tela
 │   ├── js/                   # Configuração, componentes, API e comportamento

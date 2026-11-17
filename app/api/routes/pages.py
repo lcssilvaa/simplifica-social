@@ -10,7 +10,7 @@ router = APIRouter(include_in_schema=False)
 
 # Rotas explícitas: nenhum caminho de arquivo é recebido do navegador.
 PAGES = {
-    "/": "login.html",
+    "/": "landing_page/index.html",
     "/login": "login.html",
     "/inicio": "index.html",
     "/conversar": "chatbot.html",

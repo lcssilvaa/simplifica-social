@@ -17,4 +17,4 @@ def test_docs_and_openapi(client):
     }
     response = client.get("/", follow_redirects=False)
     assert response.status_code == 200
-    assert "Explorar demonstração" in response.text
+    assert "Seus direitos, sem burocracia" in response.text

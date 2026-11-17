@@ -23,7 +23,8 @@ LLM_PROVIDER=mock
 .\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000 --no-access-log
 ```
 
-- Site (acesso de demonstração): <http://localhost:8000>
+- Site (landing page): <http://localhost:8000>
+- Login (acesso de demonstração): <http://localhost:8000/login>
 - Assistente integrado: <http://localhost:8000/conversar>
 - Guia para editar textos, imagens e páginas: [frontend/README.md](frontend/README.md)
 - Swagger (interface para testar a API): <http://localhost:8000/docs>
